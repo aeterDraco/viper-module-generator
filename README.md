@@ -90,7 +90,7 @@ This is a customized version of the original vipergen, because of this the insta
 - Then go to the root directory of the repository and run the command to create the gem and then install it:
 ```bash
 gem build vipergen.gemspec
-sudo gem install vipergen -l
+sudo gem install vipergen*.gem -l
 ```
 If everything were right, you should have now the vipergem command available in your system console
 
