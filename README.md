@@ -11,6 +11,7 @@ Viper Module Generator
 Gem to generate VIPER modules to use them in your Objective-C/Swift projects
 The implementation scheme returned by this generator is hardly inspired in the example and post of Objc.io, http://www.objc.io/issue-13/viper.html .
 
+- [Jofogas](#jofogas)
 - [Features](#features)
   - [Changelog](#changelog-0.1)
   - [Expected in version 0.2](#expected-in-version-0.2)
@@ -21,6 +22,11 @@ The implementation scheme returned by this generator is hardly inspired in the e
   - [Update the gem](#update-the-gem)
   - [Add a new template](#add-a-new-template)
 - [Resources](#resources)
+
+##jofogas
+- For use in the jofogas projects a jofogas template has been added and set as a default
+- The path option is not required, the default will be the path from where the command is running
+- Default language is objc, the template has the structure for swift but its not implemented
 
 ## Features
 - Generates the module in Swift and Objective-C
@@ -44,48 +50,54 @@ The implementation scheme returned by this generator is hardly inspired in the e
 ## Viper files structure
 ```bash
 .objc
-+-- DataManager
-|   +-- VIPERDataManager.h
-|   +-- VIPERDataManager.m
-+-- Interactor
-|   +-- VIPERInteractor.h
-|   +-- VIPERInteractor.m
-+-- Presenter
-|   +-- VIPERPresenter.h
-|   +-- VIPERPresenter.m
-+-- ViewController
-|   +-- VIPERViewController.h
-|   +-- VIPERViewController.m
-+-- WireFrame
-|   +-- VIPERWireFrame.h
-|   +-- VIPERWireFrame.m
-+-- Protocols
-|   +-- VIPERProtocols.h
++-- User Interface
+|   +-- View
+|   |   +-- VIPERViewController.h
+|   |   +-- VIPERViewController.m
+|   |   +-- VIPERViewInterface.h
+|   +-- Presenter
+|   |   +-- VIPERPresenter.h
+|   |   +-- VIPERPresenter.m
+|   +-- WireFrame
+|   |   +-- VIPERWireframe.h
+|   |   +-- VIPERWireframe.m
++-- Module Interface
+|   +-- VIPERModuleInterface.h
++-- Application Logic
+|   +-- Interactor
+|   |   +-- VIPERInteractor.h
+|   |   +-- VIPERInteractor.m
+|   |   +-- VIPERInteractorIO.h
 .swift
-+-- DataManager
-|   +-- VIPERDataManager.swift
-+-- Interactor
-|   +-- VIPERInteractor.swift
-+-- Presenter
-|   +-- VIPERPresenter.swift
-+-- ViewController
-|   +-- VIPERViewController.swift
-+-- WireFrame
-|   +-- VIPERWireFrame.swift
-+-- Protocols
-|   +-- VIPERProtocols.swift
++-- User Interface
+|   +-- View
+|   |   +-- VIPERViewController.swift
+|   |   +-- VIPERViewInterface.swift
+|   +-- Presenter
+|   |   +-- VIPERPresenter.swift
+|   +-- WireFrame
+|   |   +-- VIPERWireframe.swift
++-- Module Interface
+|   +-- VIPERModuleInterface.swift
++-- Application Logic
+|   +-- Interactor
+|   |   +-- VIPERInteractor.swift
+|   |   +-- VIPERInteractorIO.swift
 ```
 ## How to install vipergen ?
-You can install it easily as using the gem. With ruby installed in your OSX execute:
+This is a customized version of the original vipergen, because of this the installation process is diferent.
+- To ensure that you install the latest version clone or download the repository
+- Then go to the root directory of the repository and run the command to create the gem and then install it:
 ```bash
-sudo gem install vipergen
+gem build vipergen.gemspec
+sudo gem install vipergen -l
 ```
 If everything were right, you should have now the vipergem command available in your system console
 
 ## How to generate a VIPER module with a given name?
 You have just to execute the following command
 ```bash
-vipergen generate MyFirstViperModule --path=~/myproject/shared
+vipergen generate MyFirstViperModule 
 ```
 And then the files structure will be automatically created. Don't forget to add this folder to your project dragging it into the XCode/Appcode inspector
 
@@ -122,5 +134,3 @@ updated_at: 2014-08-24
 ## Contact
 If you have any doubt about the gem or even if you want to make any suggestion you can do it directly to my email address, pedro@redbooth.com . You can use the issues Github page too
 =======
-# vipergen
-A gem tool to build VIPER modules in objc or swift
